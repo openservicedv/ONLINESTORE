@@ -9,30 +9,19 @@ import {
 	NavbarCollapse,
 	NavbarToggle
 } from 'react-bootstrap';
-import {NavLink, Route, Routes} from 'react-router-dom';
-import Home from '../pages/Home';
-import Games from '../pages/Games';
-import Photos from '../pages/Photos';
-import Blog from '../pages/Blog';
-import logo from '../logo/logo8.png';
-import {useState} from 'react';
 import {LuShoppingCart} from 'react-icons/lu';
-import Cart from './Cart';
+import {NavLink, Route, Routes} from 'react-router-dom';
+import logo from '../logo/logo8.png';
+import Home from './Home';
+import Game from './Game';
+import Blog from './Blog';
+import {Store} from '../Store/Store';
+import {Cart} from '../Cart/Cart';
+import {useContext} from 'react';
+import {SearchContext} from '../contexts/SearchContext';
 
-const Header = () => {
-	const [searchText, setSearchText] = useState('');
-	const [isCartOpen, setIsCartOpen] = useState(false);
-
-	const handleCartToggle = () => {
-		setIsCartOpen(!isCartOpen);
-	};
-	const closeCart = () => {
-		setIsCartOpen(false);
-	};
-	const handleSearch = (event) => {
-		setSearchText(event.target.value);
-
-	};
+const NaviBar = () => {
+	const {searchText, isCartOpen, handleSearch, handleCartToggle, closeCart} = useContext(SearchContext);
 
 	return (
 		<div>
@@ -51,11 +40,12 @@ const Header = () => {
 						<Nav className="me-auto">
 							<Nav.Link to="/" as={NavLink}> Home </Nav.Link>
 							<Nav.Link to="/blog" as={NavLink}> Blog </Nav.Link>
-							<Nav.Link to="/photos" as={NavLink}> Photos </Nav.Link>
-							<Nav.Link to="/games" as={NavLink}> Games </Nav.Link>
+							<Nav.Link to="/store" as={NavLink}> Store </Nav.Link>
+							<Nav.Link to="/game" as={NavLink}> Game </Nav.Link>
 						</Nav>
 						<Form className="d-flex flex-row">
 							<FormControl
+								name="form-name"
 								inline="true"
 								placeholder="search"
 								type="text"
@@ -85,22 +75,20 @@ const Header = () => {
 							</Button>
 						</Form>
 					</NavbarCollapse>
-
 					<Cart
 						isCartOpen={isCartOpen}
 						closeCart={closeCart}
 					/>
-
 				</Container>
 			</Navbar>
 			<Routes>
 				<Route path="/" element={<Home/>}/>
 				<Route path="/blog" element={<Blog/>}/>
-				<Route path="/photos" element={<Photos searchText={searchText}/>}/>
-				<Route path="/games" element={<Games/>}/>
+				<Route path="/store" element={<Store searchText={searchText}/>}/>
+				<Route path="/game" element={<Game/>}/>
 			</Routes>
 		</div>
 	);
 };
 
-export default Header;
+export default NaviBar;

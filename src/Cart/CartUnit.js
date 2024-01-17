@@ -1,10 +1,14 @@
-import storeItems from '../data/items.json';
 import {Button, Stack} from 'react-bootstrap';
+import {useContext} from 'react';
+import {CartContext} from '../contexts/CartContext';
 
-// eslint-disable-next-line no-unused-vars
-const CartItems = ({id, quantity, cartItems, setCartItems}) => {
-	const item = storeItems.find(item => item.id === id);
+const CartUnit = ({id, quantity}) => {
+
+	const {itemsJson} = useContext(CartContext);
+
+	const item = itemsJson.find(item => item.id === id);
 	if (item == null) return null;
+	// todo - ? Why (item == null) instead of (item)
 
 	//todo remove from cart
 
@@ -41,4 +45,4 @@ const CartItems = ({id, quantity, cartItems, setCartItems}) => {
 	);
 };
 
-export default CartItems;
+export default CartUnit;

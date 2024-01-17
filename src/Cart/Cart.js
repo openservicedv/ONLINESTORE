@@ -1,11 +1,12 @@
+import {Offcanvas, Stack} from 'react-bootstrap';
+import CartUnit from './CartUnit';
 import {useContext} from 'react';
 import {CartContext} from '../contexts/CartContext';
-import CartItems from './CartItems';
-import {Offcanvas, Stack} from 'react-bootstrap';
-import storeItems from '../data/items.json';
 
-const Cart = ({isCartOpen, closeCart}) => {
-	const [cartItems, setCartItems] = useContext(CartContext);
+export const Cart = ({isCartOpen, closeCart}) => {
+
+	const {cartItems, setCartItems, itemsJson} = useContext(CartContext);
+
 	return (
 		<div>
 			<Offcanvas show={isCartOpen} onHide={closeCart} placement="end">
@@ -16,15 +17,15 @@ const Cart = ({isCartOpen, closeCart}) => {
 					<Stack>
 						{
 							cartItems.map(item => (
-								<CartItems
+								<CartUnit
 									key={item.id}
 									{...item}
+									// todo {...item} - что за синтаксис??
 									cartItems={cartItems}
 									setCartItems={setCartItems}
 								/>
 							))
 						}
-
 						<div className="ms-auto fw-bold fs-5">
 
 							{/*todo currency formatter*/}
@@ -34,7 +35,7 @@ const Cart = ({isCartOpen, closeCart}) => {
 							Total:{' '}
 							{
 								cartItems.reduce((total, cartItem) => {
-									const item = storeItems.find(item => item.id === cartItem.id);
+									const item = itemsJson.find(item => item.id === cartItem.id);
 									return total + (item.price * cartItem.quantity);
 								}, 0)
 							}
@@ -48,5 +49,3 @@ const Cart = ({isCartOpen, closeCart}) => {
 		</div>
 	);
 };
-
-export default Cart;

@@ -1,6 +1,6 @@
 import {Button, Card} from 'react-bootstrap';
 
-const StoreItem = ({item, increaseQuantity, decreaseQuantity, addToCart, removeFromCart, cartItems}) => {
+export const StoreUnit = ({item, increaseQuantity, decreaseQuantity, addToCart, removeFromCart, cartItems}) => {
 
 	const cartItem = cartItems.find((cartItem)=>cartItem.id === item.id);
 	const quantity = cartItem ? cartItem.quantity: 0;
@@ -44,5 +44,3 @@ const StoreItem = ({item, increaseQuantity, decreaseQuantity, addToCart, removeF
 		</div>
 	);
 };
-
-export default StoreItem;

@@ -1,14 +1,16 @@
 import './App.css';
-import Header from './components/Header';
+import NaviBar from './components/NaviBar';
 import {CartProvider} from './contexts/CartContext';
-
+import {SearchProvider} from './contexts/SearchContext';
 
 function App() {
 	return (
 		<CartProvider>
-			<div className="App">
-				<Header/>
-			</div>
+			<SearchProvider>
+				<div className="App">
+					<NaviBar/>
+				</div>
+			</SearchProvider>
 		</CartProvider>
 	);
 }
