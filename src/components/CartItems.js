@@ -2,8 +2,7 @@ import storeItems from '../data/items.json';
 import {Button, Stack} from 'react-bootstrap';
 import {formatCurrency} from '../currency/formatCurrency';
 
-// eslint-disable-next-line no-unused-vars
-const CartItems = ({id, quantity, cartItems, setCartItems}) => {
+const CartItems = ({id, quantity}) => {
 	const item = storeItems.find(item => item.id === id);
 	if (item == null) return null;
 
