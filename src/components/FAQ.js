@@ -1,4 +1,4 @@
-const Games = () => {
+const FAQ = () => {
 	return (
 		<div>
 			<h1> Games page </h1>
@@ -6,4 +6,4 @@ const Games = () => {
 	);
 };
 
-export default Games;
+export default FAQ;

@@ -1,12 +1,13 @@
 import {useContext} from 'react';
 import {CartContext} from '../contexts/CartContext';
-import CartItems from './CartItems';
+import CartUnits from './CartUnits';
 import {Offcanvas, Stack} from 'react-bootstrap';
 import storeItems from '../data/items.json';
 import {formatCurrency} from '../currency/formatCurrency';
 
 const Cart = ({isCartOpen, closeCart}) => {
-	const [cartItems, setCartItems] = useContext(CartContext);
+	const [cartItems] = useContext(CartContext);
+	console.log(cartItems);
 	return (
 		<div>
 			<Offcanvas show={isCartOpen} onHide={closeCart} placement="end">
@@ -15,12 +16,12 @@ const Cart = ({isCartOpen, closeCart}) => {
 				</Offcanvas.Header>
 				<Offcanvas.Body>
 					<Stack>
+						{
+							console.log(cartItems)
+						}
 						{cartItems.map(item => (
-							<CartItems
-								key={item.id}
+							<CartUnits key={item.id}
 								{...item}
-								cartItems={cartItems}
-								setCartItems={setCartItems}
 							/>
 						))
 						}

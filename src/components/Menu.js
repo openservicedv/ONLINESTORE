@@ -10,16 +10,16 @@ import {
 	NavbarToggle
 } from 'react-bootstrap';
 import {NavLink, Route, Routes} from 'react-router-dom';
-import Home from '../pages/Home';
-import Games from '../pages/Games';
-import Photos from '../pages/Photos';
-import Blog from '../pages/Blog';
+import Home from './Home';
+import FAQ from './FAQ';
+import Store from './Store';
+import Blog from './Blog';
 import logo from '../logo/logo8.png';
 import {useState} from 'react';
 import {LuShoppingCart} from 'react-icons/lu';
 import Cart from './Cart';
 
-const Header = () => {
+const Menu = () => {
 	const [searchText, setSearchText] = useState('');
 	const [isCartOpen, setIsCartOpen] = useState(false);
 
@@ -51,11 +51,12 @@ const Header = () => {
 						<Nav className="me-auto">
 							<Nav.Link to="/" as={NavLink}> Home </Nav.Link>
 							<Nav.Link to="/blog" as={NavLink}> Blog </Nav.Link>
-							<Nav.Link to="/photos" as={NavLink}> Photos </Nav.Link>
-							<Nav.Link to="/games" as={NavLink}> Games </Nav.Link>
+							<Nav.Link to="/store" as={NavLink}> Store </Nav.Link>
+							<Nav.Link to="/FAQ" as={NavLink}> FAQ </Nav.Link>
 						</Nav>
 						<Form className="d-flex flex-row">
 							<FormControl
+								name="form-id"
 								inline="true"
 								placeholder="search"
 								type="text"
@@ -96,11 +97,11 @@ const Header = () => {
 			<Routes>
 				<Route path="/" element={<Home/>}/>
 				<Route path="/blog" element={<Blog/>}/>
-				<Route path="/photos" element={<Photos searchText={searchText}/>}/>
-				<Route path="/games" element={<Games/>}/>
+				<Route path="/store" element={<Store searchText={searchText}/>}/>
+				<Route path="/FAQ" element={<FAQ/>}/>
 			</Routes>
 		</div>
 	);
 };
 
-export default Header;
+export default Menu;

@@ -2,7 +2,7 @@ import storeItems from '../data/items.json';
 import {Button, Stack} from 'react-bootstrap';
 import {formatCurrency} from '../currency/formatCurrency';
 
-const CartItems = ({id, quantity}) => {
+const CartUnits = ({id, quantity}) => {
 	const item = storeItems.find(item => item.id === id);
 	if (item == null) return null;
 
@@ -41,4 +41,4 @@ const CartItems = ({id, quantity}) => {
 	);
 };
 
-export default CartItems;
+export default CartUnits;
