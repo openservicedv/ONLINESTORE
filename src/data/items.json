@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "name": "Model_1",
+    "price": 299,
+    "image": "/images/005.webp"
+  },
+  {
+    "id": 2,
+    "name": "Model_2",
+    "price": 249,
+    "image": "/images/001.webp"
+  },
+  {
+    "id": 3,
+    "name": "Model_3",
+    "price": 459,
+    "image": "/images/002.webp"
+  },
+  {
+    "id": 4,
+    "name": "Model_4",
+    "price": 999,
+    "image": "/images/003.webp"
+  }
+]
