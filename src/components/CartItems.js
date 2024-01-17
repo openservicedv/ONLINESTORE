@@ -1,5 +1,6 @@
 import storeItems from '../data/items.json';
 import {Button, Stack} from 'react-bootstrap';
+import {formatCurrency} from '../currency/formatCurrency';
 
 // eslint-disable-next-line no-unused-vars
 const CartItems = ({id, quantity, cartItems, setCartItems}) => {
@@ -22,11 +23,11 @@ const CartItems = ({id, quantity, cartItems, setCartItems}) => {
 					)}
 				</div>
 				<div className="text-muted" style={{fontSize: '.8rem'}}>
-					{item.price}
+					{formatCurrency(item.price)}
 				</div>
 			</div>
 			<div className="text-muted" style={{fontSize: '.8rem'}}>
-				{item.price * quantity}
+				{formatCurrency(item.price * quantity)}
 			</div>
 			<Button
 				variant={'outline-danger'}
