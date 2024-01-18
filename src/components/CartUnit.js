@@ -4,17 +4,30 @@ import {CartContext} from '../contexts/CartContext';
 
 const CartUnit = ({id, quantity}) => {
 
-	const {itemsJson} = useContext(CartContext);
+	const {itemsJson, currencyFormat, removeInsideCart} = useContext(CartContext);
 
 	const item = itemsJson.find(item => item.id === id);
 	if (item == null) return null;
 	// todo - ? Why (item == null) instead of (item)
 
-	//todo remove from cart
+	// const removeInsideCart = () => {
+	// 	const updatedCart = cartItems.filter(el => el.id !== id);
+	// 	setCartItems(updatedCart);
+	// };
 
 	return (
-		<Stack direction="horizontal" className="d-flex align-items-center">
-			<img src={item.image} alt="img" style={{width: '100px', height: '100px', objectFit: 'contain'}}
+		<Stack
+			direction="horizontal"
+			className="border-bottom d-flex align-items-center"
+		>
+			<img
+				src={item.image}
+				alt="img"
+				style={{
+					width: '100px',
+					height: '100px',
+					objectFit: 'contain'
+				}}
 			/>
 			<div className="me-auto">
 				<div>
@@ -26,20 +39,18 @@ const CartUnit = ({id, quantity}) => {
 					)}
 				</div>
 				<div className="text-muted" style={{fontSize: '.8rem'}}>
-					{item.price}
+					{currencyFormat(item.price)}
 				</div>
 			</div>
 			<div className="text-muted" style={{fontSize: '.8rem'}}>
-				{item.price * quantity}
+				{currencyFormat(item.price * quantity)}
 			</div>
 			<Button
 				variant={'outline-danger'}
 				size={'sm'}
-
-				// todo				onClick={removeFromCart}
-
+				onClick={() => removeInsideCart(id)}
 			>
-				&times;
+                &times;
 			</Button>
 		</Stack>
 	);

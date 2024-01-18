@@ -1,25 +1,25 @@
 [
   {
     "id": 1,
-    "name": "Model_1",
+    "name": "RED",
     "price": 299,
     "image": "/images/005.webp"
   },
   {
     "id": 2,
-    "name": "Model_2",
+    "name": "WHITE",
     "price": 249,
     "image": "/images/001.webp"
   },
   {
     "id": 3,
-    "name": "Model_3",
+    "name": "BROWN",
     "price": 459,
     "image": "/images/002.webp"
   },
   {
     "id": 4,
-    "name": "Model_4",
+    "name": "GREEN",
     "price": 999,
     "image": "/images/003.webp"
   }

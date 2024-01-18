@@ -1,5 +1,5 @@
 import './App.css';
-import NaviBar from './components/NaviBar';
+import {NaviBar} from './components/NaviBar';
 import {CartProvider} from './contexts/CartContext';
 import {SearchProvider} from './contexts/SearchContext';
 
