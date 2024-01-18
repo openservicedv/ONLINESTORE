@@ -15,17 +15,25 @@ export const Cart = () => {
 				show={isCartOpen}
 				onHide={closeCart}
 				placement="end"
+				className=''
 			>
-				<Offcanvas.Header closeButton>
-					<Offcanvas.Title> Cart </Offcanvas.Title>
+				<Offcanvas.Header
+					closeButton
+					className='border'
+				>
+					<Offcanvas.Title
+						style={{
+							width: '330px',
+							objectFit: 'contain',
+							textAlign: 'center',
+							fontWeight: 'bold'
+						}}
+					> SHOPPING CART </Offcanvas.Title>
 				</Offcanvas.Header>
 				<Offcanvas.Body>
 					<Stack className="">
 						{cartItems.map(el => (
-							<CartUnit key={el.id}
-								{...el}                     // todo {...el} - что за синтаксис props ??
-							/>
-						))}
+							<CartUnit key={el.id} {...el}/>))}
 						<div className="ms-auto fw-bold fs-5">
                             Total:{' '}
 							{currencyFormat(cartItems.reduce((total, el) => {

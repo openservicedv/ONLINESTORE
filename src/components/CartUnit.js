@@ -3,47 +3,40 @@ import {useContext} from 'react';
 import {CartContext} from '../contexts/CartContext';
 
 const CartUnit = ({id, quantity}) => {
-
 	const {itemsJson, currencyFormat, removeInsideCart} = useContext(CartContext);
 
-	const item = itemsJson.find(item => item.id === id);
-	if (item == null) return null;
-	// todo - ? Why (item == null) instead of (item)
-
-	// const removeInsideCart = () => {
-	// 	const updatedCart = cartItems.filter(el => el.id !== id);
-	// 	setCartItems(updatedCart);
-	// };
+	const unit = itemsJson.find(el => el.id === id); // if (item == null) return null;
 
 	return (
 		<Stack
 			direction="horizontal"
-			className="border-bottom d-flex align-items-center"
+			className="border d-flex align-items-center justify-content-between"
 		>
 			<img
-				src={item.image}
+				src={unit.image}
 				alt="img"
+				className="border"
 				style={{
 					width: '100px',
 					height: '100px',
 					objectFit: 'contain'
 				}}
 			/>
-			<div className="me-auto">
+			<div className="me-auto border">
 				<div>
-					{item.name}
+					{unit.name}
 					{quantity >= 1 && (
-						<span className="text-muted" style={{fontSize: '.7rem'}}>
+						<span className="text-muted border" style={{fontSize: '.7rem'}}>
 							x {quantity}
 						</span>
 					)}
 				</div>
-				<div className="text-muted" style={{fontSize: '.8rem'}}>
-					{currencyFormat(item.price)}
+				<div className="text-muted border" style={{fontSize: '.8rem'}}>
+					{currencyFormat(unit.price)}
 				</div>
 			</div>
-			<div className="text-muted" style={{fontSize: '.8rem'}}>
-				{currencyFormat(item.price * quantity)}
+			<div className="text-muted border" style={{fontSize: '.8rem'}}>
+				{currencyFormat(unit.price * quantity)}
 			</div>
 			<Button
 				variant={'outline-danger'}

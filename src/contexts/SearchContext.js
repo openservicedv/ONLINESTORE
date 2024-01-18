@@ -1,5 +1,4 @@
 import {createContext, useState} from 'react';
-
 export const SearchContext = createContext();
 
 export const SearchProvider = (props) => {
@@ -10,7 +9,6 @@ export const SearchProvider = (props) => {
 	const handleCartToggle = () => {setIsCartOpen(!isCartOpen);};
 	const closeCart = () => {setIsCartOpen(false);};
 
-
 	return (
 		<SearchContext.Provider value={{
 			searchText,
@@ -19,8 +17,8 @@ export const SearchProvider = (props) => {
 			setIsCartOpen,
 			handleSearch,
 			handleCartToggle,
-			closeCart}}
-		>
+			closeCart
+		}}>
 			{props.children}
 		</SearchContext.Provider>
 	);

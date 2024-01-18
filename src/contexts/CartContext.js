@@ -1,7 +1,6 @@
 import {createContext, useState} from 'react';
 import itemsJson from '../data/items.json';
 import {currencyFormat} from '../controllers/currencyFormat';
-
 export const CartContext = createContext();
 
 export const CartProvider = (props) => {
