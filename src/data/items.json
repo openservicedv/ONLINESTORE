@@ -1,26 +1,30 @@
 [
   {
     "id": 1,
-    "name": "RED",
-    "price": 299,
-    "image": "/images/005.webp"
+    "name": "GOODYEAR Eagle Touring",
+    "size": "245/45R19 98W",
+    "price": 210.99,
+    "image": "/images/GOODYEAR Eagle Touring.jpg"
   },
   {
     "id": 2,
-    "name": "WHITE",
-    "price": 249,
-    "image": "/images/001.webp"
+    "name": "MICHELIN CrossClimate2",
+    "size": "215/55R17 94V",
+    "price": 285.99,
+    "image": "/images/MICHELIN CrossClimate2.jpg"
   },
   {
     "id": 3,
-    "name": "BROWN",
-    "price": 459,
-    "image": "/images/002.webp"
+    "name": "Pirelli PZero Performance",
+    "size": "245/45R19XL 102Y",
+    "price": 249.99,
+    "image": "/images/Pirelli P ZERO Performance.jpg"
   },
   {
     "id": 4,
-    "name": "GREEN",
-    "price": 999,
-    "image": "/images/003.webp"
+    "name": "TOYO PXSP",
+    "size": "255/40R21 102Y XL",
+    "price": 301.99,
+    "image": "/images/Toyo.jpg"
   }
 ]

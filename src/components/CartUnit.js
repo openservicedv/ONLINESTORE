@@ -10,41 +10,135 @@ const CartUnit = ({id, quantity}) => {
 	return (
 		<Stack
 			direction="horizontal"
-			className="border d-flex align-items-center justify-content-between"
-		>
+			className="d-flex justify-content-around"
+			style={{
+				width: '370px',
+				height: '100px',
+				marginBottom: '10px',
+				border: 'solid 1px #d2d5de',
+				borderRadius: '10px',
+			}}>
 			<img
 				src={unit.image}
 				alt="img"
-				className="border"
 				style={{
-					width: '100px',
-					height: '100px',
-					objectFit: 'contain'
+					width: '80px',
+					height: '80px',
 				}}
 			/>
-			<div className="me-auto border">
-				<div>
-					{unit.name}
-					{quantity >= 1 && (
-						<span className="text-muted border" style={{fontSize: '.7rem'}}>
-							x {quantity}
-						</span>
-					)}
+			<div
+				style={{
+					width: '280px',
+				}}>
+				<div
+					className="d-flex align-items-start justify-content-between"
+					style={{
+						height: '50px',
+					}}>
+					<span
+						style={{
+							textAlign: 'start',
+							fontSize: '12px',
+						}}
+					>{unit.name}<br/>{unit.size}
+					</span>
+					<br/>
+					<div
+						className="d-flex flex-column me-1"
+					>
+						<div
+							className="text-muted"
+							style={{
+								width: '80px',
+								textAlign: 'center',
+								fontSize: '10px',
+								border: 'solid #d2d5de',
+								borderRadius: '10px',
+								marginTop: '3px',
+								marginBottom: '2px',
+							}}>price
+						</div>
+						<div
+							style={{
+								textAlign: 'center',
+								fontSize: '12px',
+								color: 'brown',
+								// fontWeight: 'bolder',
+							}}>{currencyFormat(unit.price)}
+						</div>
+					</div>
 				</div>
-				<div className="text-muted border" style={{fontSize: '.8rem'}}>
-					{currencyFormat(unit.price)}
+				<div
+					className="d-flex justify-content-between"
+					style={{
+						// border: 'dashed red',
+					}}>
+					<div
+						className="d-flex flex-column justify-content-around align-content-around"
+						style={{
+							width: '80px',
+							// border: 'dashed green',
+						}}>
+						<div
+							className="text-muted"
+							style={{
+								// width: '60px',
+								textAlign: 'center',
+								fontSize: '10px',
+								border: 'solid #d2d5de',
+								borderRadius: '10px',
+								// marginTop: '3px',
+								// marginBottom: '2px',
+							}}>{quantity >= 1 && (
+								<span> quantity </span>)}
+						</div>
+						<div
+							style={{
+								textAlign: 'center',
+								fontSize: '12px',
+								color: 'brown',
+								// fontWeight: 'bolder',
+							}}>{quantity}
+						</div>
+					</div>
+					<Button
+						variant={'outline-danger'}
+						size={'sm'}
+						onClick={() => removeInsideCart(id)}
+						style={{
+							width: '30px',
+							height: '30px',
+							textAlign: 'center',
+							fontSize: '14px',
+							borderRadius: '10px',
+						}}>&times;
+					</Button>
+
+					<div className="d-flex flex-column me-1">
+						<div
+							className="text-muted"
+							style={{
+								width: '80px',
+								textAlign: 'center',
+								fontSize: '10px',
+								border: 'solid #d2d5de',
+								borderRadius: '10px',
+								marginBottom: '2px',
+							}}>subtotal
+						</div>
+
+						<div
+							style={{
+								textAlign: 'center',
+								fontSize: '12px',
+								color: 'brown',
+								// fontWeight: 'bolder',
+							}}
+						>{currencyFormat(unit.price * quantity)}
+						</div>
+					</div>
 				</div>
 			</div>
-			<div className="text-muted border" style={{fontSize: '.8rem'}}>
-				{currencyFormat(unit.price * quantity)}
-			</div>
-			<Button
-				variant={'outline-danger'}
-				size={'sm'}
-				onClick={() => removeInsideCart(id)}
-			>
-                &times;
-			</Button>
 		</Stack>
 	);
 };

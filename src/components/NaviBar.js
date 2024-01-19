@@ -1,5 +1,5 @@
 import {Container, Navbar, NavbarBrand, NavbarCollapse, NavbarToggle} from 'react-bootstrap';
-import logo from '../logo/logo8.png';
+import logo from '../logo/bridgestone1_2_orig.png';
 import {Cart} from './Cart';
 import {NaviLinks, NaviRoutes} from './NaviRoutes';
 import {SearchForm} from './SearchForm';
@@ -10,10 +10,14 @@ export const NaviBar = () => {
 		<div>
 			<Navbar collapseOnSelect expand="lg" bg="light">
 				<Container>
-					<NavbarBrand>
-						<img src={logo} height="40" width="170" alt="logo"/>
+					<NavbarBrand
+						// className="ms-1"
+					>
+						<img src={logo} height="15" width="120" alt="logo"/>
 					</NavbarBrand>
-					<NavbarToggle aria-controls="responsive-navbar-nav"/>
+					<NavbarToggle
+						aria-controls="responsive-navbar-nav"
+					/>
 					<NavbarCollapse id="responsive-navbar-nav">
 						<NaviLinks/>
 						<SearchForm/>

@@ -11,14 +11,12 @@
 }
 
 .button-group {
-    border: brown solid 1px;
-    display: flex;
-    flex-direction: column;
-    height: 200px;
-    align-items: center;
-    justify-content: center;
-
-
+    border: #d2d5de solid 1px;
+/*    display: flex;*/
+/*    flex-direction: column;*/
+/*    height: 200px;*/
+/*    align-items: center;*/
+/*    justify-content: center;*/
 }
 
 /*.App-header {*/

@@ -25,7 +25,7 @@ export const Cart = () => {
 						style={{
 							width: '330px',
 							objectFit: 'contain',
-							textAlign: 'center',
+							textAlign: 'start',
 							fontWeight: 'bold'
 						}}
 					> SHOPPING CART </Offcanvas.Title>

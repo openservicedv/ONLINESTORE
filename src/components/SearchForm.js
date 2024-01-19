@@ -1,7 +1,8 @@
 import {Button, Form, FormControl} from 'react-bootstrap';
-import {LuShoppingCart} from 'react-icons/lu';
+// import {LuShoppingCart} from 'react-icons/lu';
 import {useContext} from 'react';
 import {SearchContext} from '../contexts/SearchContext';
+import {PiShoppingCartSimpleLight} from 'react-icons/pi';
 
 export const SearchForm = () => {
 
@@ -20,12 +21,13 @@ export const SearchForm = () => {
 			<Button
 				className="rounded-circle"
 				style={{width: '3rem', height: '3rem', position: 'relative'}}
-				variant="outline-primary"
+				variant="outline-secondary"
 				onClick={handleCartToggle}
 			>
-				<LuShoppingCart/>
+				{/*<LuShoppingCart/>*/}
+				<PiShoppingCartSimpleLight />
 				<div
-					className="rounded-circle bg-danger"
+					className="rounded-circle bg-dark"
 					style={{
 						width: '1.5rem',
 						height: '1.5rem',

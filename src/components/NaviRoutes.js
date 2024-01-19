@@ -10,7 +10,7 @@ export const NaviLinks = () => {
 		<Nav className="me-auto">
 			<Nav.Link to="/" 		as={NavLink}> Home </Nav.Link>
 			<Nav.Link to="/blog" 	as={NavLink}> Blog </Nav.Link>
-			<Nav.Link to="/store" 	as={NavLink}> Store </Nav.Link>
+			<Nav.Link to="/store" 	as={NavLink}> Tire Store </Nav.Link>
 			<Nav.Link to="/game" 	as={NavLink}> Game </Nav.Link>
 		</Nav>
 	);
