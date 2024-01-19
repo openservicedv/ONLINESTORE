@@ -33,8 +33,10 @@ export const Cart = () => {
 				<Offcanvas.Body>
 					<Stack className="">
 						{cartItems.map(el => (
-							<CartUnit key={el.id} {...el}/>))}
-						<div className="ms-auto fw-bold fs-5">
+							<CartUnit
+								key={el.id}
+								{...el}/>))}
+						<div className="ms-auto fw-bold fs-6">
                             Total:{' '}
 							{currencyFormat(cartItems.reduce((total, el) => {
 								const item = itemsJson.find(item => item.id === el.id);

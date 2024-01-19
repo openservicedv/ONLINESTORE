@@ -1,11 +1,12 @@
-import {createContext, useState} from 'react';
+import {createContext} from 'react';
 import itemsJson from '../data/items.json';
 import {currencyFormat} from '../controllers/currencyFormat';
+import {useLocalStorage} from '../controllers/useLocalStorage';
 export const CartContext = createContext();
 
 export const CartProvider = (props) => {
 
-	const [cartItems, setCartItems] = useState([]);
+	const [cartItems, setCartItems] = useLocalStorage('cartLocal', []);
 	const addToCart = (item) => {
 		if (cartItems.find(el => el.id === item.id)) {
 			setCartItems(cartItems.map(el => (item.id === el.id ? {...el, quantity: el.quantity + 1} : el)));
