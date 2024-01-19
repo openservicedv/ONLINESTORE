@@ -11,7 +11,7 @@ export const StoreUnit = ({item}) => {
 
 	return (
 		<Card
-			className="ms-2 mb-2 mt-2 me-0 d-flex flex-column justify-content-center align-items-center"
+			className="d-flex flex-column justify-content-center align-items-center ms-2 mt-2"
 			style={{
 				width: '225px',
 				height: '405px',
@@ -44,8 +44,9 @@ export const StoreUnit = ({item}) => {
 							width: '200px',
 							height: '30px',
 							textAlign: 'start',
-							fontSize: '15px',
-							textShadow: '1px 1px 1px grey',
+							fontSize: '13px',
+							fontWeight: 'bolder'
+							// textShadow: '1px 1px 1px grey',
 						}}
 					>{item.size}
 					</span>
