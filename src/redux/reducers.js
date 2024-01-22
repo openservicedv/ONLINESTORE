@@ -15,26 +15,22 @@ export const reducer = (state = defaultState, action) => {
 	case 'closeCart':
 		return {...state, isCartOpen: action.payload};
 	case 'addToCart':
-		return state.cartItemsRedux
-			.find(el => el.id === action.payload.id)
-			? {...state, cartItemsRedux: [...state.cartItemsRedux, {...action.payload, quantity: action.payload.quantity + 1}]}
+		return state.cartItemsRedux.find(el => el.id === action.payload.id)
+			? {...state, cartItemsRedux: state.cartItemsRedux
+				.map(el => (action.payload.id === el.id ? {...el, quantity: el.quantity + 1} : el))}
 			: {...state, cartItemsRedux: [...state.cartItemsRedux, {...action.payload, quantity: 1}]};
 	case 'removeFromCart':
 		return {...state, cartItemsRedux: state.cartItemsRedux
-			.filter(el => (action.payload.id !== el.id))
-		};
+			.filter(el => (action.payload.id !== el.id))};
 	case 'removeInsideCart':
 		return {...state, cartItemsRedux: state.cartItemsRedux
-			.filter(el => (action.payload !== el.id))
-		};
+			.filter(el => (action.payload !== el.id))};
 	case 'increaseQuantity':
 		return {...state, cartItemsRedux: state.cartItemsRedux
-			.map(el => (action.payload.id === el.id ? {...el, quantity: el.quantity + 1} : el))
-		};
+			.map(el => (action.payload.id === el.id ? {...el, quantity: el.quantity + 1} : el))};
 	case 'decreaseQuantity':
 		return {...state, cartItemsRedux: state.cartItemsRedux
-			.map(el => (action.payload.id === el.id ? {...el, quantity: el.quantity - 1} : el))
-		};
+			.map(el => (action.payload.id === el.id ? {...el, quantity: el.quantity - 1} : el))};
 	default:
 		return state;
 	}

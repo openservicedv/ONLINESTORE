@@ -6,11 +6,8 @@ import {useDispatch, useSelector} from 'react-redux';
 export const StoreUnit = ({item}) => {
 	const dispatch = useDispatch();
 	const cartItemsRedux = useSelector(state => state.cartItemsRedux);
-	// console.log(cartItemsRedux);
 
 	const unit = cartItemsRedux.find(el => el.id === item.id);
-	console.log(unit);
-	console.log(item.id);
 	const quantity = unit ? unit.quantity : 0;
 
 	return (
