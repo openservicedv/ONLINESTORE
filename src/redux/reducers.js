@@ -1,10 +1,10 @@
-import itemsJsonRedux from '../data/items.json';
+import itemsJson from '../data/items.json';
 
 const defaultState = {
 	handleSearch: '',
 	isCartOpen: false,
-	itemJsonRedux: itemsJsonRedux,
-	cartItemsRedux: [],
+	itemJson: itemsJson,
+	cartItems: [],
 };
 export const reducer = (state = defaultState, action) => {
 	switch (action.type) {
@@ -15,21 +15,21 @@ export const reducer = (state = defaultState, action) => {
 	case 'closeCart':
 		return {...state, isCartOpen: action.payload};
 	case 'addToCart':
-		return state.cartItemsRedux.find(el => el.id === action.payload.id)
-			? {...state, cartItemsRedux: state.cartItemsRedux
+		return state.cartItems.find(el => el.id === action.payload.id)
+			? {...state, cartItems: state.cartItems
 				.map(el => (action.payload.id === el.id ? {...el, quantity: el.quantity + 1} : el))}
-			: {...state, cartItemsRedux: [...state.cartItemsRedux, {...action.payload, quantity: 1}]};
+			: {...state, cartItems: [...state.cartItems, {...action.payload, quantity: 1}]};
 	case 'removeFromCart':
-		return {...state, cartItemsRedux: state.cartItemsRedux
+		return {...state, cartItems: state.cartItems
 			.filter(el => (action.payload.id !== el.id))};
 	case 'removeInsideCart':
-		return {...state, cartItemsRedux: state.cartItemsRedux
+		return {...state, cartItems: state.cartItems
 			.filter(el => (action.payload !== el.id))};
 	case 'increaseQuantity':
-		return {...state, cartItemsRedux: state.cartItemsRedux
+		return {...state, cartItems: state.cartItems
 			.map(el => (action.payload.id === el.id ? {...el, quantity: el.quantity + 1} : el))};
 	case 'decreaseQuantity':
-		return {...state, cartItemsRedux: state.cartItemsRedux
+		return {...state, cartItems: state.cartItems
 			.map(el => (action.payload.id === el.id ? {...el, quantity: el.quantity - 1} : el))};
 	default:
 		return state;

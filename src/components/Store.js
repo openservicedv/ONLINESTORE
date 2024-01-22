@@ -4,7 +4,7 @@ import {useSelector} from 'react-redux';
 
 export const Store = () => {
 	const handleSearch = useSelector(state => state.handleSearch);
-	const itemsJsonRedux = useSelector(state => state.itemJsonRedux);
+	const itemsJson = useSelector(state => state.itemJson);
 
 	return (
 		<div className="d-flex flex-column">
@@ -12,7 +12,7 @@ export const Store = () => {
 				className="m-4"
 			> TIRE STORE </h1>
 			<Row className="d-flex justify-content-start align-content-start vh-100">
-				{itemsJsonRedux
+				{itemsJson
 					.filter(el => el.name.toLowerCase().includes(handleSearch.toLowerCase()))
 					.map(item => (
 						<Col key={item.id} xs={'auto'} md={'auto'} lg={'auto'}>

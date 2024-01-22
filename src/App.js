@@ -1,16 +1,14 @@
 import './App.css';
 import {NaviBar} from './components/NaviBar';
 import {Provider} from 'react-redux';
-import {reduxStore} from './redux/reduxStore';
+import {store} from './redux/store';
 
-function App() {
+export default function App() {
 	return (
-		<Provider store={reduxStore}>
+		<Provider store={store}>
 			<div className="App">
 				<NaviBar/>
 			</div>
 		</Provider>
 	);
 }
-
-export default App;

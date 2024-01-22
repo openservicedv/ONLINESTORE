@@ -5,9 +5,9 @@ import {useDispatch, useSelector} from 'react-redux';
 
 export const StoreUnit = ({item}) => {
 	const dispatch = useDispatch();
-	const cartItemsRedux = useSelector(state => state.cartItemsRedux);
+	const cartItems = useSelector(state => state.cartItems);
 
-	const unit = cartItemsRedux.find(el => el.id === item.id);
+	const unit = cartItems.find(el => el.id === item.id);
 	const quantity = unit ? unit.quantity : 0;
 
 	return (

@@ -7,8 +7,8 @@ import {useDispatch, useSelector} from 'react-redux';
 export const Cart = () => {
 	const dispatch = useDispatch();
 	const isCartOpen = useSelector(state => state.isCartOpen);
-	const itemsJsonRedux = useSelector(state => state.itemJsonRedux);
-	const cartItemsRedux = useSelector(state => state.cartItemsRedux);
+	const itemsJson = useSelector(state => state.itemJson);
+	const cartItems = useSelector(state => state.cartItems);
 
 	return (
 		<div>
@@ -33,15 +33,15 @@ export const Cart = () => {
 				</Offcanvas.Header>
 				<Offcanvas.Body>
 					<Stack className="">
-						{cartItemsRedux.map(el => (
+						{cartItems.map(el => (
 							<CartUnit
 								key={el.id}
 								{...el}
 							/>))}
 						<div className="ms-auto fw-bold fs-6">
                             Total:{' '}
-							{currencyFormat(cartItemsRedux.reduce((total, el) => {
-								const item = itemsJsonRedux.find(item => item.id === el.id);
+							{currencyFormat(cartItems.reduce((total, el) => {
+								const item = itemsJson.find(item => item.id === el.id);
 								return total + (item.price * el.quantity);
 							}, 0))}
 						</div>

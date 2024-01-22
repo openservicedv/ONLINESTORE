@@ -5,9 +5,9 @@ import {removeInsideCart} from '../redux/actions';
 
 const CartUnit = ({id, quantity}) => {
 	const dispatch = useDispatch();
-	const itemsJsonRedux = useSelector(state => state.itemJsonRedux);
+	const itemsJson = useSelector(state => state.itemJson);
 
-	const unit = itemsJsonRedux.find(el => el.id === id); // if (item == null) return null;
+	const unit = itemsJson.find(el => el.id === id); // if (item == null) return null;
 
 	return (
 		<Stack
