@@ -33,11 +33,7 @@ export const Cart = () => {
 				</Offcanvas.Header>
 				<Offcanvas.Body>
 					<Stack className="">
-						{cartItems.map(el => (
-							<CartUnit
-								key={el.id}
-								{...el}
-							/>))}
+						{cartItems.map(el => el.quantity !== 0 ? (<CartUnit key={el.id} {...el}/>) : '')}
 						<div className="ms-auto fw-bold fs-6">
                             Total:{' '}
 							{currencyFormat(cartItems.reduce((total, el) => {

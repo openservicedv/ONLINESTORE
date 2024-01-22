@@ -5,7 +5,7 @@ export const useLocalStorage = (key, defaultValue) => {
 	const [value, setValue] = useState(() => {
 		let currentValue;
 		try {
-			currentValue = JSON.parse(localStorage.getItem(key) || String(defaultValue));
+			currentValue = JSON.parse(localStorage.getItem('') || String(defaultValue));
 		} catch (error) {
 			currentValue = defaultValue;
 		}
