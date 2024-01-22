@@ -1,17 +1,15 @@
 import './App.css';
 import {NaviBar} from './components/NaviBar';
-import {CartProvider} from './contexts/CartContext';
-import {SearchProvider} from './contexts/SearchContext';
+import {Provider} from 'react-redux';
+import {reduxStore} from './redux/reduxStore';
 
 function App() {
 	return (
-		<CartProvider>
-			<SearchProvider>
-				<div className="App">
-					<NaviBar/>
-				</div>
-			</SearchProvider>
-		</CartProvider>
+		<Provider store={reduxStore}>
+			<div className="App">
+				<NaviBar/>
+			</div>
+		</Provider>
 	);
 }
 

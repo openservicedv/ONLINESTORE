@@ -1,12 +1,16 @@
 import {Button, Card} from 'react-bootstrap';
-import {useContext} from 'react';
-import {CartContext} from '../contexts/CartContext';
+import {currencyFormat} from '../controllers/currencyFormat';
+import {addToCart, decreaseQuantity, increaseQuantity, removeFromCart} from '../redux/actions';
+import {useDispatch, useSelector} from 'react-redux';
 
 export const StoreUnit = ({item}) => {
+	const dispatch = useDispatch();
+	const cartItemsRedux = useSelector(state => state.cartItemsRedux);
+	// console.log(cartItemsRedux);
 
-	const {cartItems, addToCart, removeFromCart, increaseQuantity, decreaseQuantity, currencyFormat} = useContext(CartContext);
-
-	const unit = cartItems.find(el => el.id === item.id);
+	const unit = cartItemsRedux.find(el => el.id === item.id);
+	console.log(unit);
+	console.log(item.id);
 	const quantity = unit ? unit.quantity : 0;
 
 	return (
@@ -62,21 +66,21 @@ export const StoreUnit = ({item}) => {
 				<div>
 					{quantity ? (
 						<div className="d-flex justify-content-around">
-							<Button variant="outline-secondary" onClick={() => decreaseQuantity(item)}>
+							<Button variant="outline-secondary" onClick={() => dispatch(decreaseQuantity(item))}>
 								-
 							</Button>
 							<span className="d-flex fs-5 align-items-center">
 								{quantity}
 							</span>
-							<Button variant="outline-secondary" onClick={() => increaseQuantity(item)}>
+							<Button variant="outline-secondary" onClick={() => dispatch(increaseQuantity(item))}>
                                 +
 							</Button>
-							<Button variant="outline-secondary" onClick={() => removeFromCart(item)}>
+							<Button variant="outline-secondary" onClick={() => dispatch(removeFromCart(item))}>
                                 Remove
 							</Button>
 						</div>
 					) : (
-						<Button className="w-100" variant="outline-secondary" onClick={() => addToCart(item)}
+						<Button className="w-100" variant="outline-secondary" onClick={() => dispatch(addToCart(item))}
 						>Add to Cart
 						</Button>)
 					}

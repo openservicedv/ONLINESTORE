@@ -1,11 +1,13 @@
 import {Button, Stack} from 'react-bootstrap';
-import {useContext} from 'react';
-import {CartContext} from '../contexts/CartContext';
+import {currencyFormat} from '../controllers/currencyFormat';
+import {useDispatch, useSelector} from 'react-redux';
+import {removeInsideCart} from '../redux/actions';
 
 const CartUnit = ({id, quantity}) => {
-	const {itemsJson, currencyFormat, removeInsideCart} = useContext(CartContext);
+	const dispatch = useDispatch();
+	const itemsJsonRedux = useSelector(state => state.itemJsonRedux);
 
-	const unit = itemsJson.find(el => el.id === id); // if (item == null) return null;
+	const unit = itemsJsonRedux.find(el => el.id === id); // if (item == null) return null;
 
 	return (
 		<Stack
@@ -104,7 +106,7 @@ const CartUnit = ({id, quantity}) => {
 					<Button
 						variant={'outline-danger'}
 						size={'sm'}
-						onClick={() => removeInsideCart(id)}
+						onClick={() => dispatch(removeInsideCart(id))}
 						style={{
 							width: '30px',
 							height: '30px',

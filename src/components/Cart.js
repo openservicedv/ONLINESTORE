@@ -1,19 +1,20 @@
 import {Offcanvas, Stack} from 'react-bootstrap';
 import CartUnit from './CartUnit';
-import {useContext} from 'react';
-import {CartContext} from '../contexts/CartContext';
-import {SearchContext} from '../contexts/SearchContext';
+import {currencyFormat} from '../controllers/currencyFormat';
+import {closeCart} from '../redux/actions';
+import {useDispatch, useSelector} from 'react-redux';
 
 export const Cart = () => {
-
-	const {cartItems, itemsJson, currencyFormat} = useContext(CartContext);
-	const {isCartOpen, closeCart} = useContext(SearchContext);
+	const dispatch = useDispatch();
+	const isCartOpen = useSelector(state => state.isCartOpen);
+	const itemsJsonRedux = useSelector(state => state.itemJsonRedux);
+	const cartItemsRedux = useSelector(state => state.cartItemsRedux);
 
 	return (
 		<div>
 			<Offcanvas
 				show={isCartOpen}
-				onHide={closeCart}
+				onHide={()=>dispatch(closeCart())}
 				placement="end"
 				className=''
 			>
@@ -32,14 +33,15 @@ export const Cart = () => {
 				</Offcanvas.Header>
 				<Offcanvas.Body>
 					<Stack className="">
-						{cartItems.map(el => (
+						{cartItemsRedux.map(el => (
 							<CartUnit
 								key={el.id}
-								{...el}/>))}
+								{...el}
+							/>))}
 						<div className="ms-auto fw-bold fs-6">
                             Total:{' '}
-							{currencyFormat(cartItems.reduce((total, el) => {
-								const item = itemsJson.find(item => item.id === el.id);
+							{currencyFormat(cartItemsRedux.reduce((total, el) => {
+								const item = itemsJsonRedux.find(item => item.id === el.id);
 								return total + (item.price * el.quantity);
 							}, 0))}
 						</div>

@@ -1,12 +1,10 @@
-import {Button, Form, FormControl} from 'react-bootstrap';
-// import {LuShoppingCart} from 'react-icons/lu';
-import {useContext} from 'react';
-import {SearchContext} from '../contexts/SearchContext';
 import {PiShoppingCartSimpleLight} from 'react-icons/pi';
+import {Button, Form, FormControl} from 'react-bootstrap';
+import {useDispatch} from 'react-redux';
+import {handleCartToggle, handleSearch} from '../redux/actions';
 
 export const SearchForm = () => {
-
-	const {handleSearch, handleCartToggle} = useContext(SearchContext);
+	const dispatch = useDispatch();
 
 	return (
 		<Form className="d-flex flex-row">
@@ -16,16 +14,15 @@ export const SearchForm = () => {
 				placeholder="search"
 				type="text"
 				className="me-sm-3"
-				onChange={() => handleSearch(event)}
+				onChange={() => dispatch(handleSearch(event))}
 			/>
 			<Button
 				className="rounded-circle"
 				style={{width: '3rem', height: '3rem', position: 'relative'}}
 				variant="outline-secondary"
-				onClick={handleCartToggle}
+				onClick={() => dispatch(handleCartToggle())}
 			>
-				{/*<LuShoppingCart/>*/}
-				<PiShoppingCartSimpleLight />
+				<PiShoppingCartSimpleLight/>
 				<div
 					className="rounded-circle bg-dark"
 					style={{
