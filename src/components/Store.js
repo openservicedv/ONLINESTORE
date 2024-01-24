@@ -1,10 +1,11 @@
 import {Col, Row} from 'react-bootstrap';
 import {StoreUnit} from './StoreUnit';
+
 import {useSelector} from 'react-redux';
 
 export const Store = () => {
-	const handleSearch = useSelector(state => state.handleSearch);
-	const itemsJson = useSelector(state => state.itemJson);
+	const handleSearch = useSelector(state => state.storeReducer.handleSearch);
+	const itemsJson = useSelector(state => state.storeReducer.itemJson);
 
 	return (
 		<div className="d-flex flex-column">

@@ -1,7 +1,7 @@
 import {PiShoppingCartSimpleLight} from 'react-icons/pi';
 import {Button, Form, FormControl} from 'react-bootstrap';
 import {useDispatch} from 'react-redux';
-import {handleCartToggle, handleSearch} from '../redux/actions';
+import {handleCartToggle, handleSearch} from '../store/actions';
 
 export const SearchForm = () => {
 	const dispatch = useDispatch();

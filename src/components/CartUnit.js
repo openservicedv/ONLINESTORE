@@ -1,13 +1,14 @@
 import {Button, Stack} from 'react-bootstrap';
 import {currencyFormat} from '../controllers/currencyFormat';
+
 import {useDispatch, useSelector} from 'react-redux';
-import {removeInsideCart} from '../redux/actions';
+import {removeInsideCart} from '../store/actions';
 
 const CartUnit = ({id, quantity}) => {
 	const dispatch = useDispatch();
-	const itemsJson = useSelector(state => state.itemJson);
+	const itemsJson = useSelector(state => state.storeReducer.itemJson);
 
-	const unit = itemsJson.find(el => el.id === id); // if (item == null) return null;
+	const unit = itemsJson.find(el => el.id === id);
 
 	return (
 		<Stack

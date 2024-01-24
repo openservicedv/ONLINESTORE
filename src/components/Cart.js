@@ -1,14 +1,15 @@
 import {Offcanvas, Stack} from 'react-bootstrap';
 import CartUnit from './CartUnit';
 import {currencyFormat} from '../controllers/currencyFormat';
-import {closeCart} from '../redux/actions';
+
+import {closeCart} from '../store/actions';
 import {useDispatch, useSelector} from 'react-redux';
 
 export const Cart = () => {
 	const dispatch = useDispatch();
-	const isCartOpen = useSelector(state => state.isCartOpen);
-	const itemsJson = useSelector(state => state.itemJson);
-	const cartItems = useSelector(state => state.cartItems);
+	const isCartOpen = useSelector(state => state.cartReducer.isCartOpen);
+	const itemsJson = useSelector(state => state.storeReducer.itemJson);
+	const cartItems = useSelector(state => state.cartReducer.cartItems);
 
 	return (
 		<div>

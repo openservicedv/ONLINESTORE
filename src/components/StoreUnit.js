@@ -1,11 +1,13 @@
 import {Button, Card} from 'react-bootstrap';
 import {currencyFormat} from '../controllers/currencyFormat';
-import {addToCart, decreaseQuantity, increaseQuantity, removeFromCart} from '../redux/actions';
+
+import {addToCart, decreaseQuantity, increaseQuantity, removeFromCart} from '../store/actions';
+
 import {useDispatch, useSelector} from 'react-redux';
 
 export const StoreUnit = ({item}) => {
 	const dispatch = useDispatch();
-	const cartItems = useSelector(state => state.cartItems);
+	const cartItems = useSelector(state => state.cartReducer.cartItems);
 
 	const unit = cartItems.find(el => el.id === item.id);
 	const quantity = unit ? unit.quantity : 0;
